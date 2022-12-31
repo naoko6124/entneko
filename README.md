@@ -51,3 +51,11 @@ And finally, destroy an entity.
 ```cpp
 world.destroy_entity(entity);
 ```
+
+Now, if you want to query the world.
+```
+world.query<position>([&world](entneko::entity e) {
+  position& pos = world.get_component<position>(e);
+  std::cout << "For each entity: " << pos.x << std::endl;
+});
+```
