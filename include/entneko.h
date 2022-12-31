@@ -102,7 +102,7 @@ namespace entneko
         }
 
         template<typename... types>
-        void view(std::function<void(entity e)> fn)
+        void query(std::function<void(entity e)> fn)
         {
             if (sizeof...(types) == 0)
                 throw exception("view needs at least one component");

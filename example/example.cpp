@@ -54,7 +54,7 @@ void testing_view()
     pos3.x = 5.0f;
     pos3.y = 6.0f;
     world.destroy_entity(entity2);
-    world.view<tag, position>([&world](entneko::entity e) {
+    world.query<tag, position>([&world](entneko::entity e) {
         tag& t = world.get_component<tag>(e);
         position& pos = world.get_component<position>(e);
         std::cout << t.name << " (" << pos.x << ", " << pos.y << ")" << std::endl;
