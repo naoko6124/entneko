@@ -39,7 +39,7 @@ bool has_position = world.has_component<position>(entity);
 And get a reference to a component.
 ```cpp
 position& pos_ref = world.get_component<position>(entity);
-std::cout << pos_ref << std::endl;
+std::cout << pos_ref.x << std::endl;
 ```
 
 And subtract a component of an entity too.
