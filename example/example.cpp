@@ -59,6 +59,43 @@ void testing_view()
         position& pos = world.get_component<position>(e);
         std::cout << t.name << " (" << pos.x << ", " << pos.y << ")" << std::endl;
     });
+    
+    world.sub_component<position>(entity1);
+    bool test1 = world.has_component<position>(entity1);
+    bool test2 = world.has_component<velocity>(entity1);
+    std::cout << test1 << std::endl;
+    std::cout << test2 << std::endl;
+}
+
+void multiple_worlds()
+{
+    entneko::world w1;
+    entneko::entity e1 = w1.create_entity();
+    position& p1 = w1.add_component<position>(e1);
+    p1.x = 2;
+    p1.y = 4;
+    velocity& v1 = w1.add_component<velocity>(e1);
+    v1.x = 1;
+    v1.y = 3;
+    entneko::world w2;
+    entneko::entity e2 = w2.create_entity();
+    position& p2 = w2.add_component<position>(e2);
+    p2.x = 6;
+    p2.y = 8;
+    tag& t2 = w2.add_component<tag>(e2);
+    t2.name = "aaa";
+
+    w1.query<position, velocity>([&w1](entneko::entity e){
+        position& p = w1.get_component<position>(e);
+        velocity& v = w1.get_component<velocity>(e);
+        printf("w1(%f, %f)(%f, %f)\n", p.x, p.y, v.x, v.y);
+    });
+
+    w2.query<position, tag>([&w2](entneko::entity e){
+        position& p = w2.get_component<position>(e);
+        tag& t = w2.get_component<tag>(e);
+        printf("w2(%f, %f)(%s)\n", p.x, p.y, t.name);
+    });
 }
 
 int main()
@@ -66,7 +103,8 @@ int main()
     try
     {
         //deleting_entities();
-        testing_view();
+        //testing_view();
+        multiple_worlds();
     }
     catch(const entneko::exception& e)
     {

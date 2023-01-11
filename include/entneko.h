@@ -128,7 +128,7 @@ namespace entneko
             }
         }
     private:
-        int components_counter = 0;
+        static int components_counter;
 
         template<class type>
         int get_id()
@@ -169,4 +169,6 @@ namespace entneko
 
         std::array<component_pool, max_components> pools{};
     };
+
+    int world::components_counter = 0;
 }
