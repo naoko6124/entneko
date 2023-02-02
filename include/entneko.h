@@ -170,5 +170,7 @@ namespace entneko
         std::array<component_pool, max_components> pools{};
     };
 
+    #ifdef ENTNEKO_IMPLEMENTATION
     int world::components_counter = 0;
+    #endif
 }
