@@ -5,6 +5,10 @@ Simple ECS (Entity-Component-System) library.
 ## Getting Started
 
 entneko is a header-only library, so just include `entneko.h` into your project.
+```cpp
+#define ENTNEKO_IMPLEMENTATION
+#include "entneko.h"
+```
 
 ## How to use
 
