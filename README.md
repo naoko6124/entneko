@@ -1,5 +1,7 @@
 # entneko
 
+![alt text](https://github.com/naoko6124/entneko/blob/master/entneko-export.png?raw=true)
+
 Simple ECS (Entity-Component-System) library.
 
 ## Getting Started
